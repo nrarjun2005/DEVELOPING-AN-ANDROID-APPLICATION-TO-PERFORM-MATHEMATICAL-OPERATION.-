@@ -25,15 +25,116 @@ The platform uses signed two's complement integer arithmetic with int and long p
 
 
 ## PROGRAM:
+Main Activity Java
+```
+package com.example.myapplication3;
+
+ 
+
+import android.os.Bundle; import android.view.View; import android.widget.Button; import android.widget.EditText;
+
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+ 
+
+public class MainActivity extends AppCompatActivity { EditText num1, num2;
+
+Button addBtn, subBtn, mulBtn, divBtn; TextView result;
+
+@Override
+
+ 
+
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main);
+
+num1 = findViewById(R.id.num1); num2 = findViewById(R.id.num2); addBtn = findViewById(R.id.addBtn); subBtn = findViewById(R.id.subBtn); mulBtn = findViewById(R.id.mulBtn); divBtn = findViewById(R.id.divBtn); result = findViewById(R.id.result);
+
+addBtn.setOnClickListener(v -> operate('+')); subBtn.setOnClickListener(v -> operate('-')); mulBtn.setOnClickListener(v -> operate('*')); divBtn.setOnClickListener(v -> operate('/'));
+
+}
+
+ 
+
+private void operate(char op) {
+
+double n1 = Double.parseDouble(num1.getText().toString()); double n2 = Double.parseDouble(num2.getText().toString()); double res = 0;
+
+switch (op) {
+
+case '+': res = n1 + n2; break; case '-': res = n1 - n2; break; case '*': res = n1 * n2; break;
+
+case '/': res = n2 != 0 ? n1 / n2 : 0; break; }
+
+result.setText("Result: " + res); }
+
+}
+```
+Activity Main XML
+```
+<?xml version="1.0" encoding="utf-8"?>
+
+ 
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent" android:padding="16dp">
+
+ 
+
+<EditText android:id="@+id/num1" android:hint="Enter Number 1" android:layout_width="match_parent" android:layout_height="wrap_content"
+
+android:inputType="numberDecimal"/>
+
+ 
+
+<EditText android:id="@+id/num2" android:hint="Enter Number 2" android:layout_width="match_parent" android:layout_height="wrap_content"
+
+android:inputType="numberDecimal"/>
+
+ 
+
+<LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+
+ 
+
+<Button android:id="@+id/addBtn" android:text="+" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"/>
+
+ 
+
+<Button android:id="@+id/subBtn" android:text="-" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"/>
+
+ 
+
+<Button android:id="@+id/mulBtn" android:text="*" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"/>
+
+ 
+
+<Button android:id="@+id/divBtn" android:text="/" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"/>
+
+ 
+
+</LinearLayout>
+
+ 
+
+<TextView android:id="@+id/result" android:text="Result:" android:layout_width="match_parent" android:layout_height="wrap_content"
+
+android:paddingTop="10dp"/>
+
+ 
+
+</LinearLayout>
+
+```
 
 
 
 
 ## OUTPUT:
+<img width="1910" height="1022" alt="492864042-c156c3bc-2467-425e-8b27-96b5cbe5c09d" src="https://github.com/user-attachments/assets/e84e9518-d466-4c25-8c5d-6ae67b03d2a5" />
 
 
 
 
 ## RESULT:
 Thus, the Android app for basic operations (addition, subtraction, multiplication, and division) is developed and the output is verified.
-
